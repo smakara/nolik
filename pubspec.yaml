@@ -46,6 +46,15 @@ flutter:
   assets:
     - images/logo.png
     - images/splash.jpg
+    - images/ic_imslogo.png
+    - images/googlelogo.png
+    - images/fblogo.jpg
+    - images/twitterlogo.jpg
+    - images/ulogo.png
+    - images/ulogo.jpg
+    - images/login.png
+    - images/logo.png
+    - images/powered_by.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

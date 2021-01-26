@@ -2,14 +2,22 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:nolik/home_screen.dart';
+import 'package:nolik/constants/constants.dart';
+import 'package:nolik/ui/signin.dart';
+import 'package:nolik/ui/signup.dart';
+
 
 void main() {
   runApp(new MaterialApp(
     home: new SplashScreen(),
     debugShowCheckedModeBanner: false,
     routes: <String, WidgetBuilder>{
-      '/HomeScreen': (BuildContext context) => new HomeScreen()
+      '/splashscreen': (BuildContext context) =>  SplashScreen(),
+      '/HomeScreen': (BuildContext context) => new HomeScreen(),
+      SIGN_IN: (BuildContext context) =>  SignInPage(),
+      SIGN_UP: (BuildContext context) =>  SignUpScreen(),
     },
+    initialRoute: '/splashscreen',
   ));
 }
 
@@ -25,7 +33,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/HomeScreen');
+    // Navigator.of(context).pushReplacementNamed('/HomeScreen');
+    Navigator.of(context).pushReplacementNamed(SIGN_IN);
   }
 
   @override
