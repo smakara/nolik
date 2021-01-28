@@ -55,6 +55,25 @@ flutter:
     - images/login.png
     - images/logo.png
     - images/powered_by.png
+    - images/laptop.jpg
+    - images/keyboard.jpg
+    - images/printer.jpg
+    - images/cpu.jpg
+    - images/mouse.jpg
+    - images/monitor.jpg
+    - images/quizbanner.jpg
+    - images/alligator.jpg
+    - images/cat.jpg
+    - images/dog.jpg
+    - images/owl.jpg
+    - images/giraf.jpg
+    - images/apples.jpg
+    - images/avocado.jpg
+    - images/Bananas.jpg
+    - images/grapes.jpg
+    - images/orange.jpg
+    - images/Strawberries.jpg
+    - images/logo.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

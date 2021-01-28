@@ -217,7 +217,7 @@ class _SignInScreenState extends State<SignInScreen> {
           Scaffold
               .of(context)
               .showSnackBar(SnackBar(content: Text('Login Successful')));
-
+          Navigator.of(context).pushReplacementNamed(MENU);
       },
       textColor: Colors.white,
       padding: EdgeInsets.all(0.0),

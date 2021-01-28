@@ -5,6 +5,7 @@ import 'package:nolik/home_screen.dart';
 import 'package:nolik/constants/constants.dart';
 import 'package:nolik/ui/signin.dart';
 import 'package:nolik/ui/signup.dart';
+import 'package:nolik/ui/menu.dart';
 
 
 void main() {
@@ -14,6 +15,7 @@ void main() {
     routes: <String, WidgetBuilder>{
       '/splashscreen': (BuildContext context) =>  SplashScreen(),
       '/HomeScreen': (BuildContext context) => new HomeScreen(),
+      MENU: (BuildContext context) => new AnimalQuiz() ,
       SIGN_IN: (BuildContext context) =>  SignInPage(),
       SIGN_UP: (BuildContext context) =>  SignUpScreen(),
     },
