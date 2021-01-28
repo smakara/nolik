@@ -6,6 +6,7 @@ import 'package:nolik/constants/constants.dart';
 import 'package:nolik/ui/signin.dart';
 import 'package:nolik/ui/signup.dart';
 import 'package:nolik/ui/menu.dart';
+import 'package:nolik/database/database.dart';
 
 
 void main() {

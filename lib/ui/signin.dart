@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nolik/constants/constants.dart';
+import 'package:nolik/database/database.dart';
 import 'package:nolik/ui/widgets/custom_shape.dart';
 import 'package:nolik/ui/widgets/responsive_ui.dart';
 import 'package:nolik/ui/widgets/textformfield.dart';
+import 'dart:async';
 
 
 class SignInPage extends StatelessWidget {
@@ -20,7 +22,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-
+  MyDatabase db = MyDatabase() ;
   double _height;
   double _width;
   double _pixelRatio;
@@ -152,6 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Column(
           children: <Widget>[
             emailTextFormField(),
+
             SizedBox(height: _height / 40.0),
             passwordTextFormField(),
           ],
@@ -165,7 +168,7 @@ class _SignInScreenState extends State<SignInScreen> {
       keyboardType: TextInputType.emailAddress,
       textEditingController: emailController,
       icon: Icons.email,
-      hint: "Email ID",
+      hint: "Username",
     );
 
   }
@@ -212,12 +215,22 @@ class _SignInScreenState extends State<SignInScreen> {
     return RaisedButton(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-      onPressed: () {
-          print("Routing to your account");
-          Scaffold
-              .of(context)
-              .showSnackBar(SnackBar(content: Text('Login Successful')));
-          Navigator.of(context).pushReplacementNamed(MENU);
+      onPressed: () async {
+        print("login +++++++++++++++ ");
+
+         print( await db.login(emailController.text, passwordController.text) );
+         if(await db.login(emailController.text, passwordController.text)>0){
+           Scaffold
+               .of(context)
+               .showSnackBar(SnackBar(content: Text('Login Successful')));
+            Navigator.of(context).pushReplacementNamed(MENU);
+         }else{
+
+           Scaffold
+               .of(context)
+               .showSnackBar(SnackBar(content: Text('Login Failed')));
+         }
+
       },
       textColor: Colors.white,
       padding: EdgeInsets.all(0.0),

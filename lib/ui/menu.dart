@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import './quiz1.dart';
 import './quiz2.dart';
 import './quiz3.dart';
+import 'package:nolik/database/database.dart';
+
+
 
 void main(){
   runApp(
@@ -19,6 +22,9 @@ class AnimalQuiz extends StatefulWidget{
 }
 
 class AnimalQuizState extends State<AnimalQuiz>{
+
+
+  MyDatabase db = MyDatabase() ;
   @override
   Widget build(BuildContext context) {
    return new Scaffold(
@@ -86,7 +92,9 @@ class AnimalQuizState extends State<AnimalQuiz>{
   }
 
   void startQuiz(){
-   setState(() {
+   setState(() async {
+
+
      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
    });
   }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nolik/constants/constants.dart';
+import 'package:nolik/models/student.dart';
 import 'package:nolik/ui/widgets/custom_shape.dart';
 import 'package:nolik/ui/widgets/customappbar.dart';
 import 'package:nolik/ui/widgets/responsive_ui.dart';
 import 'package:nolik/ui/widgets/textformfield.dart';
+import 'package:nolik/database/database.dart';
 
 
 
@@ -19,6 +21,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   double _pixelRatio;
   bool _large;
   bool _medium;
+  MyDatabase db = MyDatabase() ;
+  final myController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -142,8 +151,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: _height / 60.0),
             lastNameTextFormField(),
             SizedBox(height: _height/ 60.0),
-            emailTextFormField(),
-            SizedBox(height: _height / 60.0),
             phoneTextFormField(),
             SizedBox(height: _height / 60.0),
             passwordTextFormField(),
@@ -154,16 +161,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget firstNameTextFormField() {
+
+
     return CustomTextField(
       keyboardType: TextInputType.text,
+      textEditingController: nameController,
       icon: Icons.person,
       hint: "First Name",
+
+
     );
   }
 
   Widget lastNameTextFormField() {
     return CustomTextField(
       keyboardType: TextInputType.text,
+      textEditingController: surnameController,
       icon: Icons.person,
       hint: "Last Name",
     );
@@ -179,15 +192,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget phoneTextFormField() {
     return CustomTextField(
-      keyboardType: TextInputType.number,
-      icon: Icons.phone,
-      hint: "Mobile Number",
+      keyboardType: TextInputType.text,
+      textEditingController: usernameController,
+      icon: Icons.person,
+      hint: "User Name",
     );
   }
 
   Widget passwordTextFormField() {
     return CustomTextField(
       keyboardType: TextInputType.text,
+      textEditingController: passwordController,
       obscureText: true,
       icon: Icons.lock,
       hint: "Password",
@@ -222,7 +237,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
       onPressed: () {
-        print("Routing to your account");
+        print("Routing to your account 1");
+
+
+        final student  = Student(
+            // id: ,
+            username: usernameController.text,
+            name: nameController.text,
+            surname: surnameController.text,
+            password: passwordController.text,
+            mark: 0,
+            quiz: ""
+            );
+        print("Routing to your account 2");
+        registerStudent(student);
+
+        print("Routing to your account 3");
       },
       textColor: Colors.white,
       padding: EdgeInsets.all(0.0),
@@ -237,7 +267,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
         padding: const EdgeInsets.all(12.0),
-        child: Text('SIGN UP', style: TextStyle(fontSize: _large? 14: (_medium? 12: 10)),),
+        child: Text('SIGN UPv', style: TextStyle(fontSize: _large? 14: (_medium? 12: 10)),),
       ),
     );
   }
@@ -313,5 +343,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ],
       ),
     );
+  }
+
+
+  void registerStudent(Student student){
+
+    db.cleanDatabase();
+
+    db.add(student);
+    print("=======>student " + student.toString());
+    print("Routing to your account4");
+
+    db.add(student);
+
   }
 }
