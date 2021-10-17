@@ -1,6 +1,11 @@
 # nolik
 
-This project is a starting point for a Flutter application.
+Nolik is an elementary application for building the mental wellnes of  children from the ages of 2-4 years.
+its a quiz app , where children are tested of their iconic learning capabilities.
+
+Iconic model of learning is the stage in which there is an internal representation of external objects in the form of a mental image or picture. Finally, symbolic is the stage where information is stored in the form of a symbol, such as language.
+
+The iconic stage appears from one to six years old. This stage involves an internal representation of external objects visually in the form of a mental image or icon. For example, a child drawing an image of a tree or thinking of an image of a tree would be representative of this stage.
 
 ## Images/Screenshots
 
